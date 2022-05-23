@@ -25,3 +25,18 @@
     $temp = $pdo->prepare($fetch);
     $temp->execute();
     $names = $temp->fetchAll(PDO::FETCH_ASSOC);
+
+    if(isset($_POST["name"]) && !empty($_POST["name"])) {
+        $name =  htmlspecialchars($_POST["name"]);
+        $request = $pdo->prepare("INSERT INTO argonautes (name) VALUES ('$name')");
+        $resultat= $request->execute(); $request->debugDumpParams(); 
+        header('Location: ./'); 
+    }
+
+    if(isset($_GET['del'])) {
+        $id = $_GET['del']; 
+        $request = $pdo->prepare("DELETE FROM `argonautes` WHERE argonautes.id = ('$id')");
+        $request->execute();
+        header('Location: ./'); 
+      }
+    

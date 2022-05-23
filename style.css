@@ -18,14 +18,20 @@ body {
 
 main {
   padding: 0;
-   margin-bottom: 180px;
+  margin: 0.5em;
+  margin-bottom: 180px;
 }
 
 hr { 
+  width: 100%;
+  position: fixed;
+  top: 0;
+  transform: translateZ(0);
   border: none; 
   margin: 0; 
   height: 30px;
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/wave.svg); 
+  background: url(meander.svg);
+  
 }
 
 .container {
@@ -44,6 +50,7 @@ header h1 {
   font-size: 3em;
   padding: 1.3em;
   text-transform: uppercase;
+  text-decoration: underline wavy #93A3F9;
 }
 
 h1, h2 {
@@ -70,12 +77,30 @@ input {
 }
 
 form {
+  margin: 3em 0;
   display: flex;
   justify-content: center;
 }
 
+button {
+  cursor: pointer;
+  margin-left: 15px;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  border: none;
+  background: url(favicon.png) no-repeat;
+  background-size: contain;
+  transition: 0.4s;
+}
+
+button:hover {
+  transform: rotate(180deg);
+}
+
 
 .member-list {
+    margin-top: 3em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -88,8 +113,12 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.25em 25px;
+  padding: 0.5em 25px;
   text-transform: capitalize;
+}
+
+.member-item:hover {
+  background-color: #f6f6f6;
 }
 
 .cross {
@@ -103,7 +132,6 @@ form {
     position: absolute;
     top: 50%;
     height: 4px;
-    width: 21px;
     background: #f76c6c;
     border-radius: 2px;
     transition: 0.2s;
@@ -114,16 +142,15 @@ form {
 }
 
 .cross::before {
-    transform:rotate(-45deg);
+    width: 19px;
+    transform:rotate(-48deg);
 }
 
 .cross::after {
-    transform:rotate(45deg);
+    width: 21px;
+    transform:rotate(39deg);
 }
 
-.footerInfos img {
-  max-width: 96px;
-}
 
 footer {
   width: 100%;
@@ -140,9 +167,38 @@ footer {
 
 }
 
-.footerInfos {
+.footerBottom {
   color: #fff;
   background: #93A3F9;
   padding-bottom: 18px;
   margin: 0;
+}
+
+.logo {
+  max-width: 96px;
+}
+
+.infos {
+  margin: auto;
+  padding: 15px 0;
+  max-width: 960px;
+  display: flex;
+  align-items: center;
+}
+
+p {
+  margin: 0 10px;
+  max-width: 260px;
+}
+
+@media screen and (max-width: 526px) {
+  .member-item {
+    width: 50%;
+  }
+  .infos {
+    justify-content: center;
+  }
+  p {
+    width: 180px;
+  }
 }
